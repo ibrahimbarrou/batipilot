@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+/* ============================================================
+   PILOTIS — DESIGN SYSTEM
+   Tokens de fondation : couleurs, typographie, espacements,
+   rayons, ombres, mouvement. Une seule source de vérité.
+   ============================================================ */
+
+@theme {
+  /* --- Marque : Bleu profond --- */
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dae6ff;
+  --color-brand-200: #bdd3ff;
+  --color-brand-300: #90b6ff;
+  --color-brand-400: #5b8dfb;
+  --color-brand-500: #3665f0;
+  --color-brand-600: #2148db;
+  --color-brand-700: #1a37b0;
+  --color-brand-800: #14428e;
+  --color-brand-900: #102c62;
+  --color-brand-950: #071a3d;
+
+  /* --- Accent : Orange chantier --- */
+  --color-signal-50: #fff4ed;
+  --color-signal-100: #ffe5d4;
+  --color-signal-200: #ffc7a8;
+  --color-signal-300: #ffa070;
+  --color-signal-400: #ff6f1a;
+  --color-signal-500: #f95d0b;
+  --color-signal-600: #ea4403;
+  --color-signal-700: #c23206;
+  --color-signal-800: #9a2a0d;
+  --color-signal-900: #7c260e;
+
+  /* --- Neutres --- */
+  --color-ink-50: #f7f8fa;
+  --color-ink-100: #eef0f4;
+  --color-ink-200: #e2e5ec;
+  --color-ink-300: #cbd1dc;
+  --color-ink-400: #9aa3b5;
+  --color-ink-500: #6b7488;
+  --color-ink-600: #4d566b;
+  --color-ink-700: #394155;
+  --color-ink-800: #252c3d;
+  --color-ink-900: #161b28;
+  --color-ink-950: #0b0f18;
+
+  /* --- Statuts métier --- */
+  --color-ok-50: #ecfdf5;
+  --color-ok-100: #d1fae5;
+  --color-ok-500: #10b981;
+  --color-ok-600: #059669;
+  --color-ok-700: #047857;
+
+  --color-warn-50: #fffbeb;
+  --color-warn-100: #fef3c7;
+  --color-warn-500: #f59e0b;
+  --color-warn-600: #d97706;
+  --color-warn-700: #b45309;
+
+  --color-risk-50: #fef2f2;
+  --color-risk-100: #fee2e2;
+  --color-risk-500: #ef4444;
+  --color-risk-600: #dc2626;
+  --color-risk-700: #b91c1c;
+
+  --color-info-50: #eff6ff;
+  --color-info-100: #dbeafe;
+  --color-info-500: #3b82f6;
+  --color-info-600: #2563eb;
+
+  /* --- Sémantique applicative --- */
+  --color-canvas: #f6f7f9;
+  --color-surface: #ffffff;
+  --color-surface-2: #fbfcfd;
+  --color-line: #e5e8ee;
+  --color-line-strong: #d3d8e2;
+
+  /* --- Typographie --- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1rem;
+
+  /* --- Rayons --- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+
+  /* --- Ombres (empilement doux, jamais lourd) --- */
+  --shadow-xs: 0 1px 2px 0 rgb(11 15 24 / 0.04);
+  --shadow-sm: 0 1px 2px 0 rgb(11 15 24 / 0.05), 0 1px 3px 0 rgb(11 15 24 / 0.04);
+  --shadow-md: 0 2px 4px -1px rgb(11 15 24 / 0.05), 0 6px 16px -4px rgb(11 15 24 / 0.08);
+  --shadow-lg: 0 8px 24px -6px rgb(11 15 24 / 0.12), 0 2px 6px -2px rgb(11 15 24 / 0.06);
+  --shadow-xl: 0 24px 56px -16px rgb(11 15 24 / 0.2), 0 8px 20px -8px rgb(11 15 24 / 0.1);
+  --shadow-glow: 0 0 0 1px rgb(33 72 219 / 0.12), 0 8px 24px -8px rgb(33 72 219 / 0.35);
+
+  /* --- Mouvement --- */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.26, 0.64, 1);
+
+  --animate-shimmer: shimmer 2.2s linear infinite;
+  --animate-fade-up: fade-up 0.45s var(--ease-out-quint) both;
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgb(239 68 68 / 0.45); }
+  70% { box-shadow: 0 0 0 10px rgb(239 68 68 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(239 68 68 / 0); }
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: "opsz" 32;
+  }
+  /* Chiffres tabulaires pour toute donnée financière */
+  .tnum,
+  table td,
+  table th {
+    font-variant-numeric: tabular-nums;
+  }
+  ::selection {
+    background: var(--color-brand-200);
+    color: var(--color-brand-950);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================================
+   UTILITAIRES MAISON
+   ============================================================ */
+
+@utility scrollbar-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-300) transparent;
+  &::-webkit-scrollbar { width: 8px; height: 8px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-ink-300);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  &::-webkit-scrollbar-thumb:hover { background: var(--color-ink-400); background-clip: content-box; }
+}
+
+@utility surface-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+@utility grid-blueprint {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+@utility text-balance-pretty {
+  text-wrap: pretty;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-ink-100) 25%,
+    var(--color-ink-50) 37%,
+    var(--color-ink-100) 63%
+  );
+  background-size: 600px 100%;
+  animation: var(--animate-shimmer);
+  border-radius: var(--radius-sm);
+}
+
+/* Reveal progressif d'une grille de cartes */
+.stagger > * {
+  animation: fade-up 0.5s var(--ease-out-quint) both;
+}
+.stagger > *:nth-child(1) { animation-delay: 0.02s; }
+.stagger > *:nth-child(2) { animation-delay: 0.06s; }
+.stagger > *:nth-child(3) { animation-delay: 0.1s; }
+.stagger > *:nth-child(4) { animation-delay: 0.14s; }
+.stagger > *:nth-child(5) { animation-delay: 0.18s; }
+.stagger > *:nth-child(6) { animation-delay: 0.22s; }
+.stagger > *:nth-child(7) { animation-delay: 0.26s; }
+.stagger > *:nth-child(8) { animation-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
